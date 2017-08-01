@@ -1,0 +1,29 @@
+---
+- include: java.yml
+
+- name: setup cassandra repository
+  template:
+    src: cassandra.repo.j2
+    dest: /etc/yum.repos.d/cassandra.repo
+
+- name: install cassandra and cassandra tools
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - cassandra
+    - cassandra-tools
+
+- name: setup cassandra configuration file
+  template:
+    src: cassandra.yaml.j2
+    dest: "{{ cassandra_conf_dir }}/cassandra.yaml"
+    owner: "{{ cassandra_user }}"
+    group: "{{ cassandra_group }}"
+    force: true
+
+- name: start and enable cassandra service
+  service:
+    name: cassandra
+    state: restarted
+    enabled: yes
