@@ -38,7 +38,7 @@ seed_provider:
     - class_name: org.apache.cassandra.locator.SimpleSeedProvider
       parameters:
           - seeds: {% for host in groups['esservers']  %}
-"{{ hostvars[host]['ansible_eth0']['ipv4']['netmask'] }}"
+"{{ hostvars[host]['ansible_eth0']['ipv4']['address'] }}"
 {%- if loop.last %} {%- elif loop %},{% endif %}
 {% endfor %}
 
