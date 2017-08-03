@@ -37,7 +37,7 @@ commitlog_segment_size_in_mb: 32
 seed_provider:
     - class_name: org.apache.cassandra.locator.SimpleSeedProvider
       parameters:
-          - seeds: "{% for host in groups['esservers']  %}
+          - seeds: "{% for host in groups['cassandra-servers']  %}
 {{ hostvars[host]['ansible_eth0']['ipv4']['address'] }}
 {%- if loop.last %} {%- elif loop %},{% endif %}
 {% endfor %}"
@@ -130,5 +130,5 @@ back_pressure_strategy:
         - high_ratio: 0.90
           factor: 5
           flow: FAST
-          
+
 auto_bootstrap: false
