@@ -30,7 +30,6 @@
     name: cassandra
     state: restarted
     enabled: yes
-  warn: false
 
 - include: env.yml
   static: false
