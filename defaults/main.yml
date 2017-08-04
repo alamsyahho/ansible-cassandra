@@ -1,6 +1,5 @@
 ---
-cassandra_user: cassandra
-cassandra_group: cassandra
-cassandra_conf_dir: /etc/cassandra/conf
 cassandra_cluster_name: cassandra_cluster
 num_tokens: 256
+cassandra_port: 9042
+include_env: true

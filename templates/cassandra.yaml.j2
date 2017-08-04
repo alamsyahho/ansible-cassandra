@@ -55,7 +55,7 @@ storage_port: 7000
 ssl_storage_port: 7001
 listen_address: {{ ansible_eth0.ipv4.address }}
 start_native_transport: true
-native_transport_port: 9042
+native_transport_port: {{ cassandra_port }}
 start_rpc: false
 rpc_address: {{ ansible_eth0.ipv4.address }}
 rpc_port: 9160

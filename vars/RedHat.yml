@@ -1,0 +1,4 @@
+---
+cassandra_user: cassandra
+cassandra_group: cassandra
+cassandra_conf_dir: /etc/cassandra/conf

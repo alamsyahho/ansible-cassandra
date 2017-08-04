@@ -1,4 +1,7 @@
 ---
+- name: include os specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
 - include: java.yml
 
 - name: setup cassandra repository
@@ -27,3 +30,8 @@
     name: cassandra
     state: restarted
     enabled: yes
+  warn: false
+
+- include: env.yml
+  static: false
+  when: include_env == true
