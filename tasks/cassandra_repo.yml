@@ -1,0 +1,17 @@
+---
+- name: setup cassandra repository
+  template:
+    src: cassandra.repo.j2
+    dest: /etc/yum.repos.d/cassandra.repo
+
+- rpm_key:
+    state: present
+    key: https://www.apache.org/dist/cassandra/KEYS
+    validate_certs: yes
+  register: import_key
+
+- name: Make cache
+  command: "yum -q makecache -y --disablerepo='*' --enablerepo='cassandra'"
+  args:
+    warn: false
+  when: import_key.changed

@@ -3,7 +3,7 @@ dependencies:
 - name: common
   src: https://github.com/alamsyahho/ansible-common-package.git
   scm: git
-  version: master
+  version: v1.0.0
 
 galaxy_info:
   author: alamsyahho
