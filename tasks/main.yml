@@ -2,6 +2,14 @@
 - name: include os specific variables
   include_vars: "{{ ansible_os_family }}.yml"
 
+- include: tweaks.yml
+  static: false
+  when: enable_performance_tweaks == true
+
+- include: env.yml
+  static: false
+  when: include_env == true
+
 - include: java.yml
 
 - include: cassandra_repo.yml
@@ -27,7 +35,4 @@
     name: cassandra
     state: restarted
     enabled: yes
-
-- include: env.yml
-  static: false
-  when: include_env == true
+  changed_when: false

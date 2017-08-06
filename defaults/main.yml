@@ -1,5 +1,8 @@
 ---
+# This will be the default value for this roles if it's not specified anywhere. For mode detail please see:
+# http://docs.ansible.com/ansible/latest/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable 
 cassandra_cluster_name: cassandra_cluster
 num_tokens: 256
 cassandra_port: 9042
-include_env: true
+include_env: false
+enable_performance_tweaks: false
